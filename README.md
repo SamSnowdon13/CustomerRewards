@@ -6,6 +6,7 @@ This is a sample Java / Maven / Spring Boot application thats goal is to find th
 
 This service is a simple customer REST service. It uses CustomerRepository as my custom data set to best represent my solution wihtout the need for an actual database. Autowiring this into my CustomerServiceImpl class I am able to provide all the custom logic that is needed to send back the correct data once we reach the endpoints.  
 All methods in the service include:
+
 -addCustomerRewards(List<AddRewardsRequest> addRewardsRequests) which passes in a List of AddRewardsRequests. This then integrates the logic needed to calculate the correct amount of pointes needed based on the customers total purchases.
   
 -getCustomers which simply returns a list of all the customers
@@ -16,7 +17,7 @@ All methods in the service include:
   
 -deleteCustomer(String id) delets a customer based on the id provided.
 
-This Service also includes 2 POJOs as well as a AddRewardsRequeust that has validation that no fields are null and the month is valid.
+This Service also includes 2 POJOs as well as a AddRewardsRequeust that has validation that no fields are null and the month is set to lowercase.
 
 ###### Rewards
 This includes a concurrent HashMap to apply some thread safety, and the following methods 
@@ -29,7 +30,7 @@ Simple POJO that has three fields. A String id, and a Rewards object.
 -getTotalRewards() returns the total amount of rewards necesarry and uses @JsonProperty to let Jackson know to map the JSON property name to the result of the Java method.
 
 # CustomerController/Endpoints
-There are five endpoints inside of the Customer Controller which when necessary test simple edge cases and have logging so that we can understand what went wrong and where. 
+There are five endpoints inside of the Customer Controller which when necessary test simple edge cases and have logging so that we can understand what went wrong and where, and includes top level validation. 
 
 Here are the examples of the endpoints that can be reached.
 
