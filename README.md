@@ -7,9 +7,13 @@ This is a sample Java / Maven / Spring Boot application thats goal is to find th
 This service is a simple customer REST service. It uses CustomerRepository as my custom data set to best represent my solution wihtout the need for an actual database. Autowiring this into my CustomerServiceImpl class I am able to provide all the custom logic that is needed to send back the correct data once we reach the endpoints.  
 All methods in the service include:
 -addCustomerRewards(List<AddRewardsRequest> addRewardsRequests) which passes in a List of AddRewardsRequests. This then integrates the logic needed to calculate the correct amount of pointes needed based on the customers total purchases.
+  
 -getCustomers which simply returns a list of all the customers
+  
 -getCustomer(String id) uses an id passed in as a parameter so that we can return just a single requested customer
+  
 -addCustomer(String id) adds a customer based on the passed in id that can later be modified through a PATCH endpoint.
+  
 -deleteCustomer(String id) delets a customer based on the id provided.
 
 This Service also includes 2 POJOs as well as a AddRewardsRequeust that has validation that no fields are null and the month is valid.
